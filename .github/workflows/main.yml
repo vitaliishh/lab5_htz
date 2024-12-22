@@ -13,4 +13,23 @@ jobs:
     steps:
     - name: testing
       run: echo "hello world"
-    
+
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # Укажите версию Node.js
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Display build output
+      run: ls -l dist

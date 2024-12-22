@@ -1,1 +1,16 @@
+name: CI
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  testing:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: testing
+      run: echo "hello world"
+    

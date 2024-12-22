@@ -1,7 +1,7 @@
 name: CI
 
 env:
-  AWS-REGION: eu-north-1
+  AWS_REGION: eu-north-1
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
       with:
         aws-access-key-id : ${{ secrets.ACCESS_KEY }}
         aws-secret-access-key : ${{ secrets.SECRET_ACCESS_KEY }}
-        aws-region : ${{ secrets.REGION }}
+        aws-region : ${{ env.AWS_REGION }}
 
     - name: Upload to S3
       run: |

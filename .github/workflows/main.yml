@@ -17,6 +17,9 @@ jobs:
     - name: testing
       run: echo "hello world"
 
+    - name: aws ver
+      run: aws --version
+
     - name: Update pack
       run: |
         sudo apt-get update

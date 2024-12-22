@@ -14,10 +14,12 @@ jobs:
     - name: testing
       run: echo "hello world"
 
-
+    - name: Update pack
+      run: |
+        sudo apt-get update
+        
     - name: Checkout code
       uses: actions/checkout@v3
-
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -34,13 +36,12 @@ jobs:
     - name: Display build output
       run: ls -l dist
 
-    - name: Setup AWS CLI
-      run: |
-        sudo apt-get update
-        aws configure set aws_access_key_id ${{ secrets.ACCESS_KEY }}
-        aws configure set aws_secret_access_key ${{ secrets.SECRET_ACCESS_KEY }}
-        aws configure set default.region eu-north-1
-
+    - name: Setup AWS
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id : ${{ secrets.ACCESS_KEY }}
+        aws-secret-access-key : ${{ secrets.SECRET_ACCESS_KEY }}
+        aws-region : ${{ secrets.region }}
 
     - name: Upload to S3
       run: |

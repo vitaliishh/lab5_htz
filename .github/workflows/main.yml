@@ -67,9 +67,7 @@ jobs:
 
     - name: Start the application with Serve
       run: |
-        cd dist
-        serve -s
-        sleep 3
+        serve -s dist -l 3000 &
         
     - name: Test application functionality (post-deployment)
       run: |

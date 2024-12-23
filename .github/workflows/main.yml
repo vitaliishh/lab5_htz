@@ -46,7 +46,7 @@ jobs:
       run: ls -l dist
 
     - name: Zip the dist folder
-      run: zip -r dist.zip dist/
+      run: cd dist && zip -r ../dist.zip *
 
     - name: Display all
       run: ls

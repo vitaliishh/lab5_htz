@@ -67,6 +67,7 @@ jobs:
 
     - name: Start the application with Serve
       run: |
+        cd dist
         serve -s
         sleep 3
         

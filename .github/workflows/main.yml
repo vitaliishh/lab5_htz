@@ -62,3 +62,17 @@ jobs:
       run: |
         aws s3 cp dist.zip s3://testfront111/dist.zip
 
+    - name: Install Serve globally
+      run: npm install -g serve
+
+    - name: Start the application with Serve
+      run: |
+        serve -s
+        sleep 3
+        
+    - name: Test application functionality (post-deployment)
+      run: |
+        echo "Running API tests"
+        # Replace with your actual API endpoint test
+        curl -s http://localhost:3000 | grep "OK" || exit 1
+        echo "API is up and running"

@@ -45,6 +45,12 @@ jobs:
     - name: Display build output
       run: ls -l dist
 
+    - name: Zip the dist folder
+      run: zip -r dist.zip dist/
+
+    - name: Display all
+      run: ls
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -54,5 +60,5 @@ jobs:
 
     - name: Upload to S3
       run: |
-        aws s3 sync dist/ s3://frontendbuck --delete
+        aws s3 sync dist.zip s3://frontendbuck --delete
 
